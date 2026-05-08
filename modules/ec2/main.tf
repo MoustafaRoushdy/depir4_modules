@@ -4,18 +4,6 @@ resource "aws_instance" "this" {
   subnet_id = var.subnet_id
 }
 
-variable "subnet_id" {
-  
-}
-variable "instance_ami" {
-  
-}
-
-variable "instance_type" {
-  default = "t3.nano"
-}
-
-
-output "instance_public_ip" {
-  value = aws_instance.this.public_ip
+resource "aws_security_group" "this" {
+  count = var.create_sg ? 1 : 0 
 }
